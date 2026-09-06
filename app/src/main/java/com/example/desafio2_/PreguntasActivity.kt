@@ -3,35 +3,41 @@ package com.example.desafio2_
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 
 class PreguntasActivity : AppCompatActivity() {
 
+    lateinit var raiz: ScrollView
     lateinit var tvCategoria: TextView
     lateinit var tvNivel: TextView
-    lateinit var tvProgreso: TextView
-    lateinit var tvEnunciado: TextView
-    lateinit var btnOpcion1: Button
-    lateinit var btnOpcion2: Button
-    lateinit var btnOpcion3: Button
+    lateinit var contenedorPreguntas: LinearLayout
+    lateinit var tvValidacion: TextView
+    lateinit var tvResultado: TextView
+    lateinit var btnFinalizar: Button
+    lateinit var btnReiniciar: Button
     lateinit var btnRegresar: Button
 
     lateinit var preguntas: Array<Pregunta>
-    var indice: Int = 0
-    var aciertos: Int = 0
+    val grupos: MutableList<RadioGroup> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preguntas)
 
+        raiz = findViewById(R.id.raiz)
         tvCategoria = findViewById(R.id.tvCategoria)
         tvNivel = findViewById(R.id.tvNivel)
-        tvProgreso = findViewById(R.id.tvProgreso)
-        tvEnunciado = findViewById(R.id.tvEnunciado)
-        btnOpcion1 = findViewById(R.id.btnOpcion1)
-        btnOpcion2 = findViewById(R.id.btnOpcion2)
-        btnOpcion3 = findViewById(R.id.btnOpcion3)
+        contenedorPreguntas = findViewById(R.id.contenedorPreguntas)
+        tvValidacion = findViewById(R.id.tvValidacion)
+        tvResultado = findViewById(R.id.tvResultado)
+        btnFinalizar = findViewById(R.id.btnFinalizar)
+        btnReiniciar = findViewById(R.id.btnReiniciar)
         btnRegresar = findViewById(R.id.btnRegresar)
 
         val tipo = intent.getStringExtra("TIPO").toString()
@@ -41,66 +47,84 @@ class PreguntasActivity : AppCompatActivity() {
         tvCategoria.text = tipo
         tvNivel.text = "Nivel $dificultad"
 
-        if (savedInstanceState != null) {
-            indice = savedInstanceState.getInt("INDICE")
-            aciertos = savedInstanceState.getInt("ACIERTOS")
+        construirPreguntas()
+
+        btnFinalizar.setOnClickListener {
+            finalizar()
         }
 
-        btnOpcion1.setOnClickListener {
-            responder(0)
-        }
-
-        btnOpcion2.setOnClickListener {
-            responder(1)
-        }
-
-        btnOpcion3.setOnClickListener {
-            responder(2)
+        btnReiniciar.setOnClickListener {
+            reiniciar()
         }
 
         btnRegresar.setOnClickListener {
             finish()
         }
-
-        mostrarPregunta()
     }
 
-    private fun mostrarPregunta() {
-        if (indice >= preguntas.size) {
-            mostrarResultado()
+    private fun construirPreguntas() {
+        val margenOpcion = (6 * resources.displayMetrics.density).toInt()
+
+        preguntas.forEachIndexed { posicion, pregunta ->
+            val item = layoutInflater.inflate(R.layout.item_pregunta, contenedorPreguntas, false)
+            val tvEnunciado = item.findViewById<TextView>(R.id.tvEnunciado)
+            val grupo = item.findViewById<RadioGroup>(R.id.grupoOpciones)
+
+            tvEnunciado.text = "${posicion + 1}. ${pregunta.enunciado}"
+
+            pregunta.opciones.forEach { textoOpcion ->
+                val opcion = RadioButton(this)
+                opcion.text = textoOpcion
+                opcion.textSize = 16f
+                opcion.setTextColor(ContextCompat.getColor(this, R.color.quiz_texto))
+                val parametros = RadioGroup.LayoutParams(
+                    RadioGroup.LayoutParams.MATCH_PARENT,
+                    RadioGroup.LayoutParams.WRAP_CONTENT
+                )
+                parametros.topMargin = margenOpcion
+                parametros.bottomMargin = margenOpcion
+                opcion.layoutParams = parametros
+                grupo.addView(opcion)
+            }
+
+            contenedorPreguntas.addView(item)
+            grupos.add(grupo)
+        }
+    }
+
+    private fun finalizar() {
+        val faltantes = mutableListOf<Int>()
+        grupos.forEachIndexed { posicion, grupo ->
+            if (grupo.checkedRadioButtonId == -1) {
+                faltantes.add(posicion + 1)
+            }
+        }
+
+        if (faltantes.isNotEmpty()) {
+            tvResultado.visibility = View.GONE
+            tvValidacion.text = getString(R.string.quiz_faltan, faltantes.joinToString(", "))
+            tvValidacion.visibility = View.VISIBLE
             return
         }
 
-        val pregunta = preguntas[indice]
-
-        tvProgreso.text = "Pregunta ${indice + 1} de ${preguntas.size}"
-        tvEnunciado.text = pregunta.enunciado
-        btnOpcion1.text = pregunta.opciones[0]
-        btnOpcion2.text = pregunta.opciones[1]
-        btnOpcion3.text = pregunta.opciones[2]
-    }
-
-    private fun responder(opcion: Int) {
-        if (opcion == preguntas[indice].respuestaCorrecta) {
-            aciertos++
+        var aciertos = 0
+        grupos.forEachIndexed { posicion, grupo ->
+            val opcionMarcada = grupo.findViewById<RadioButton>(grupo.checkedRadioButtonId)
+            val indiceSeleccionado = grupo.indexOfChild(opcionMarcada)
+            if (indiceSeleccionado == preguntas[posicion].respuestaCorrecta) {
+                aciertos++
+            }
         }
 
-        indice++
-        mostrarPregunta()
+        tvValidacion.visibility = View.GONE
+        tvResultado.text = getString(R.string.quiz_resultado, aciertos, preguntas.size)
+        tvResultado.visibility = View.VISIBLE
     }
 
-    private fun mostrarResultado() {
-        tvProgreso.text = getString(R.string.quiz_finalizado)
-        tvEnunciado.text = "Respuestas correctas: $aciertos de ${preguntas.size}"
-
-        btnOpcion1.visibility = View.GONE
-        btnOpcion2.visibility = View.GONE
-        btnOpcion3.visibility = View.GONE
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt("INDICE", indice)
-        outState.putInt("ACIERTOS", aciertos)
+    private fun reiniciar() {
+        grupos.forEach { it.clearCheck() }
+        tvValidacion.visibility = View.GONE
+        tvResultado.visibility = View.GONE
+        raiz.smoothScrollTo(0, 0)
     }
 }
