@@ -12,6 +12,7 @@ class ResultadoActivity : AppCompatActivity() {
     lateinit var tvNivel: TextView
     lateinit var tvPuntaje: TextView
     lateinit var tvMensaje: TextView
+    lateinit var btnRevisar: Button
     lateinit var btnNuevoQuiz: Button
     lateinit var btnRegresar: Button
 
@@ -23,6 +24,7 @@ class ResultadoActivity : AppCompatActivity() {
         tvNivel = findViewById(R.id.tvNivel)
         tvPuntaje = findViewById(R.id.tvPuntaje)
         tvMensaje = findViewById(R.id.tvMensaje)
+        btnRevisar = findViewById(R.id.btnRevisar)
         btnNuevoQuiz = findViewById(R.id.btnNuevoQuiz)
         btnRegresar = findViewById(R.id.btnRegresar)
 
@@ -30,11 +32,20 @@ class ResultadoActivity : AppCompatActivity() {
         val dificultad = intent.getStringExtra("DIFICULTAD").toString()
         val aciertos = intent.getIntExtra("ACIERTOS", 0)
         val total = intent.getIntExtra("TOTAL", 0)
+        val selecciones = intent.getIntArrayExtra("SELECCIONES") ?: IntArray(0)
 
         tvTipo.text = tipo
         tvNivel.text = dificultad
         tvPuntaje.text = getString(R.string.quiz_resultado, aciertos, total)
         tvMensaje.text = obtenerMensaje(aciertos, total, dificultad)
+
+        btnRevisar.setOnClickListener {
+            val intent = Intent(this, RevisionActivity::class.java)
+            intent.putExtra("TIPO", tipo)
+            intent.putExtra("DIFICULTAD", dificultad)
+            intent.putExtra("SELECCIONES", selecciones)
+            startActivity(intent)
+        }
 
         btnNuevoQuiz.setOnClickListener {
             val intent = Intent(this, QuizActivity::class.java)

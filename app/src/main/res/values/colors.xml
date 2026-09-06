@@ -23,4 +23,6 @@
     <color name="quiz_historia">#D97706</color>
     <color name="quiz_opcion">#FFFFFF</color>
     <color name="quiz_regresar">#64748B</color>
+    <color name="quiz_correcto">#059669</color>
+    <color name="quiz_incorrecto">#DC2626</color>
 </resources>

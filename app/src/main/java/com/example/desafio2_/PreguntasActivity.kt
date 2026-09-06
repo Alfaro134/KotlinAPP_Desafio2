@@ -107,25 +107,28 @@ class PreguntasActivity : AppCompatActivity() {
             return
         }
 
+        val selecciones = IntArray(grupos.size)
         var aciertos = 0
         grupos.forEachIndexed { posicion, grupo ->
             val opcionMarcada = grupo.findViewById<RadioButton>(grupo.checkedRadioButtonId)
             val indiceSeleccionado = grupo.indexOfChild(opcionMarcada)
+            selecciones[posicion] = indiceSeleccionado
             if (indiceSeleccionado == preguntas[posicion].respuestaCorrecta) {
                 aciertos++
             }
         }
 
         tvValidacion.visibility = View.GONE
-        mostrarResultado(aciertos)
+        mostrarResultado(aciertos, selecciones)
     }
 
-    private fun mostrarResultado(aciertos: Int) {
+    private fun mostrarResultado(aciertos: Int, selecciones: IntArray) {
         val intent = Intent(this, ResultadoActivity::class.java)
         intent.putExtra("TIPO", tipoQuiz)
         intent.putExtra("DIFICULTAD", nivelQuiz)
         intent.putExtra("ACIERTOS", aciertos)
         intent.putExtra("TOTAL", preguntas.size)
+        intent.putExtra("SELECCIONES", selecciones)
         startActivity(intent)
     }
 
