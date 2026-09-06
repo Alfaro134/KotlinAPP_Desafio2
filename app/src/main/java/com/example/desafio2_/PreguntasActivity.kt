@@ -1,5 +1,6 @@
 package com.example.desafio2_
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -18,14 +19,12 @@ class PreguntasActivity : AppCompatActivity() {
     lateinit var tvNivel: TextView
     lateinit var contenedorPreguntas: LinearLayout
     lateinit var tvValidacion: TextView
-    lateinit var contenedorResultado: LinearLayout
-    lateinit var tvTipoRealizado: TextView
-    lateinit var tvResultado: TextView
     lateinit var btnFinalizar: Button
     lateinit var btnReiniciar: Button
     lateinit var btnRegresar: Button
 
     lateinit var tipoQuiz: String
+    lateinit var nivelQuiz: String
     lateinit var preguntas: Array<Pregunta>
     val grupos: MutableList<RadioGroup> = mutableListOf()
 
@@ -38,19 +37,16 @@ class PreguntasActivity : AppCompatActivity() {
         tvNivel = findViewById(R.id.tvNivel)
         contenedorPreguntas = findViewById(R.id.contenedorPreguntas)
         tvValidacion = findViewById(R.id.tvValidacion)
-        contenedorResultado = findViewById(R.id.contenedorResultado)
-        tvTipoRealizado = findViewById(R.id.tvTipoRealizado)
-        tvResultado = findViewById(R.id.tvResultado)
         btnFinalizar = findViewById(R.id.btnFinalizar)
         btnReiniciar = findViewById(R.id.btnReiniciar)
         btnRegresar = findViewById(R.id.btnRegresar)
 
         tipoQuiz = intent.getStringExtra("TIPO").toString()
-        val dificultad = intent.getStringExtra("DIFICULTAD").toString()
+        nivelQuiz = intent.getStringExtra("DIFICULTAD").toString()
 
-        preguntas = obtenerPreguntas(tipoQuiz, dificultad)
+        preguntas = obtenerPreguntas(tipoQuiz, nivelQuiz)
         tvCategoria.text = tipoQuiz
-        tvNivel.text = "Nivel $dificultad"
+        tvNivel.text = "Nivel $nivelQuiz"
 
         construirPreguntas()
 
@@ -106,7 +102,6 @@ class PreguntasActivity : AppCompatActivity() {
         }
 
         if (faltantes.isNotEmpty()) {
-            contenedorResultado.visibility = View.GONE
             tvValidacion.text = getString(R.string.quiz_faltan, faltantes.joinToString(", "))
             tvValidacion.visibility = View.VISIBLE
             return
@@ -122,15 +117,21 @@ class PreguntasActivity : AppCompatActivity() {
         }
 
         tvValidacion.visibility = View.GONE
-        tvTipoRealizado.text = getString(R.string.quiz_tipo_realizado, tipoQuiz)
-        tvResultado.text = getString(R.string.quiz_resultado, aciertos, preguntas.size)
-        contenedorResultado.visibility = View.VISIBLE
+        mostrarResultado(aciertos)
+    }
+
+    private fun mostrarResultado(aciertos: Int) {
+        val intent = Intent(this, ResultadoActivity::class.java)
+        intent.putExtra("TIPO", tipoQuiz)
+        intent.putExtra("DIFICULTAD", nivelQuiz)
+        intent.putExtra("ACIERTOS", aciertos)
+        intent.putExtra("TOTAL", preguntas.size)
+        startActivity(intent)
     }
 
     private fun reiniciar() {
         grupos.forEach { it.clearCheck() }
         tvValidacion.visibility = View.GONE
-        contenedorResultado.visibility = View.GONE
         raiz.smoothScrollTo(0, 0)
     }
 }

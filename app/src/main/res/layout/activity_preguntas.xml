@@ -85,50 +85,6 @@
             tools:text="Faltan por responder: 2, 4"
             tools:visibility="visible" />
 
-        <LinearLayout
-            android:id="@+id/contenedorResultado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="18dp"
-            android:background="@drawable/quiz_fondo_tarjeta"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="22dp"
-            android:visibility="gone"
-            tools:visibility="visible">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/quiz_resultado_titulo"
-                android:textColor="@color/quiz_texto_suave"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvTipoRealizado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:textColor="@color/quiz_texto"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                tools:text="Tipo de quiz realizado: Ciencia" />
-
-            <TextView
-                android:id="@+id/tvResultado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:gravity="center"
-                android:textColor="@color/quiz_deportes"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:text="Obtuviste 4 de 5 respuestas correctas" />
-        </LinearLayout>
-
         <Button
             android:id="@+id/btnFinalizar"
             android:layout_width="match_parent"

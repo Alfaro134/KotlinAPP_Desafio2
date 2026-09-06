@@ -48,9 +48,20 @@
     <string name="quiz_tipo_deportes">Deportes</string>
     <string name="quiz_tipo_historia">Historia</string>
     <string name="quiz_faltan">Faltan por responder: %1$s</string>
-    <string name="quiz_resultado_titulo">Resultado del quiz</string>
-    <string name="quiz_tipo_realizado">Tipo de quiz realizado: %1$s</string>
     <string name="quiz_resultado">Obtuviste %1$d de %2$d respuestas correctas</string>
+
+    <string name="resultado_titulo">Resultados</string>
+    <string name="resultado_subtitulo">Este es tu desempeno en el quiz</string>
+    <string name="resultado_etiqueta_tipo">Tipo de quiz realizado</string>
+    <string name="resultado_etiqueta_nivel">Nivel de dificultad</string>
+    <string name="resultado_etiqueta_mensaje">Retroalimentacion</string>
+    <string name="resultado_mensaje_bajo">Adivinar no funciono, toca abrir el cuaderno.</string>
+    <string name="resultado_mensaje_medio">Ni fu ni fa, te quedaste a medio camino.</string>
+    <string name="resultado_mensaje_alto">Casi perfecto, ya te ganaste el postre.</string>
+    <string name="resultado_mensaje_perfecto_facil">Todas buenas, pero en facil no se vale presumir tanto.</string>
+    <string name="resultado_mensaje_perfecto_dificil">Impecable, ni una sola se te escapo en el nivel dificil.</string>
+
+    <string name="accion_nuevo_quiz">Realizar otro quiz</string>
 
     <string name="accion_iniciar_quiz">Iniciar quiz</string>
     <string name="accion_finalizar">Finalizar quiz</string>
