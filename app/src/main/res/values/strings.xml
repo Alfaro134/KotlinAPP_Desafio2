@@ -68,6 +68,8 @@
     <string name="revision_sin_responder">Sin responder</string>
 
     <string name="accion_nuevo_quiz">Realizar otro quiz</string>
+    <string name="accion_reintentar">Volver a intentar</string>
+    <string name="accion_inicio">Volver al inicio</string>
     <string name="accion_revisar">Revisar respuestas</string>
 
     <string name="accion_iniciar_quiz">Iniciar quiz</string>
