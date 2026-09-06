@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Desafio2_</string>
+
+    <string name="login_titulo">Bienvenido</string>
+    <string name="login_subtitulo">Inicia sesion para continuar</string>
+    <string name="registro_titulo">Crear cuenta</string>
+    <string name="registro_subtitulo">Registrate con tu correo electronico</string>
+    <string name="home_titulo">Sesion iniciada</string>
+    <string name="home_subtitulo">Has ingresado como</string>
+
+    <string name="campo_correo">Correo electronico</string>
+    <string name="campo_clave">Contrasena</string>
+    <string name="campo_confirmar_clave">Confirmar contrasena</string>
+
+    <string name="accion_ingresar">Iniciar sesion</string>
+    <string name="accion_registrarse">Crear cuenta</string>
+    <string name="accion_cerrar_sesion">Cerrar sesion</string>
+    <string name="ir_a_registro">No tienes cuenta? Registrate</string>
+    <string name="ir_a_login">Ya tienes cuenta? Inicia sesion</string>
+
+    <string name="error_correo_requerido">Ingresa tu correo electronico</string>
+    <string name="error_correo_invalido">El correo electronico no es valido</string>
+    <string name="error_clave_requerida">Ingresa tu contrasena</string>
+    <string name="error_clave_corta">La contrasena debe tener al menos 6 caracteres</string>
+    <string name="error_confirmar_requerida">Confirma tu contrasena</string>
+    <string name="error_claves_no_coinciden">Las contrasenas no coinciden</string>
+
+    <string name="error_credenciales">Correo o contrasena incorrectos</string>
+    <string name="error_usuario_no_existe">No existe una cuenta con este correo</string>
+    <string name="error_correo_en_uso">Ya existe una cuenta con este correo</string>
+    <string name="error_clave_debil">La contrasena es demasiado debil</string>
+    <string name="error_sin_conexion">Sin conexion a internet. Intenta de nuevo</string>
+    <string name="error_generico">Ocurrio un error. Intenta de nuevo</string>
+
+    <string name="registro_exitoso">Cuenta creada correctamente</string>
 </resources>
