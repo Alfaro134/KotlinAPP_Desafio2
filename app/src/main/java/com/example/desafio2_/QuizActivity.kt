@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class QuizActivity : AppCompatActivity() {
 
@@ -13,6 +14,7 @@ class QuizActivity : AppCompatActivity() {
     lateinit var btnCiencia: Button
     lateinit var btnDeportes: Button
     lateinit var btnHistoria: Button
+    lateinit var btnCerrarSesion: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class QuizActivity : AppCompatActivity() {
         btnCiencia = findViewById(R.id.btnCiencia)
         btnDeportes = findViewById(R.id.btnDeportes)
         btnHistoria = findViewById(R.id.btnHistoria)
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion)
 
         btnCulturaGeneral.setOnClickListener {
             abrirPreguntas("Cultura general")
@@ -39,6 +42,10 @@ class QuizActivity : AppCompatActivity() {
         btnHistoria.setOnClickListener {
             abrirPreguntas("Historia")
         }
+
+        btnCerrarSesion.setOnClickListener {
+            cerrarSesion()
+        }
     }
 
     private fun dificultadSeleccionada(): String {
@@ -54,5 +61,12 @@ class QuizActivity : AppCompatActivity() {
         intent.putExtra("TIPO", tipo)
         intent.putExtra("DIFICULTAD", dificultadSeleccionada())
         startActivity(intent)
+    }
+
+    private fun cerrarSesion() {
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finishAffinity()
     }
 }

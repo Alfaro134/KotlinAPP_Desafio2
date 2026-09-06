@@ -155,5 +155,18 @@
                 android:backgroundTint="@color/quiz_historia"
                 android:text="@string/quiz_tipo_historia" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/quiz_regresar"
+            android:minHeight="54dp"
+            android:text="@string/accion_cerrar_sesion"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 </ScrollView>

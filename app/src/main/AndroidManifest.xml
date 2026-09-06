@@ -49,6 +49,10 @@
         <activity
             android:name=".ResultadoActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".RevisionActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

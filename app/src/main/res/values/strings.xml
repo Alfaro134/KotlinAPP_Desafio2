@@ -61,7 +61,14 @@
     <string name="resultado_mensaje_perfecto_facil">Todas buenas, pero en facil no se vale presumir tanto.</string>
     <string name="resultado_mensaje_perfecto_dificil">Impecable, ni una sola se te escapo en el nivel dificil.</string>
 
+    <string name="revision_titulo">Revision de respuestas</string>
+    <string name="revision_subtitulo">Compara lo que elegiste con la respuesta correcta</string>
+    <string name="revision_tu_respuesta">Tu respuesta: %1$s</string>
+    <string name="revision_correcta">Respuesta correcta: %1$s</string>
+    <string name="revision_sin_responder">Sin responder</string>
+
     <string name="accion_nuevo_quiz">Realizar otro quiz</string>
+    <string name="accion_revisar">Revisar respuestas</string>
 
     <string name="accion_iniciar_quiz">Iniciar quiz</string>
     <string name="accion_finalizar">Finalizar quiz</string>
