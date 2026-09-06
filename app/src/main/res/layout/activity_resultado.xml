@@ -151,6 +151,19 @@
             android:textSize="16sp" />
 
         <Button
+            android:id="@+id/btnReintentar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/quiz_deportes"
+            android:minHeight="56dp"
+            android:text="@string/accion_reintentar"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
             android:id="@+id/btnNuevoQuiz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,7 +184,7 @@
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/quiz_regresar"
             android:minHeight="54dp"
-            android:text="@string/accion_regresar"
+            android:text="@string/accion_inicio"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

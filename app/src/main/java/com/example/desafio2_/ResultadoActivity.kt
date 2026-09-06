@@ -13,6 +13,7 @@ class ResultadoActivity : AppCompatActivity() {
     lateinit var tvPuntaje: TextView
     lateinit var tvMensaje: TextView
     lateinit var btnRevisar: Button
+    lateinit var btnReintentar: Button
     lateinit var btnNuevoQuiz: Button
     lateinit var btnRegresar: Button
 
@@ -25,6 +26,7 @@ class ResultadoActivity : AppCompatActivity() {
         tvPuntaje = findViewById(R.id.tvPuntaje)
         tvMensaje = findViewById(R.id.tvMensaje)
         btnRevisar = findViewById(R.id.btnRevisar)
+        btnReintentar = findViewById(R.id.btnReintentar)
         btnNuevoQuiz = findViewById(R.id.btnNuevoQuiz)
         btnRegresar = findViewById(R.id.btnRegresar)
 
@@ -47,6 +49,15 @@ class ResultadoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnReintentar.setOnClickListener {
+            val intent = Intent(this, PreguntasActivity::class.java)
+            intent.putExtra("TIPO", tipo)
+            intent.putExtra("DIFICULTAD", dificultad)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
+
         btnNuevoQuiz.setOnClickListener {
             val intent = Intent(this, QuizActivity::class.java)
             startActivity(intent)
@@ -54,6 +65,9 @@ class ResultadoActivity : AppCompatActivity() {
         }
 
         btnRegresar.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
             finish()
         }
     }
