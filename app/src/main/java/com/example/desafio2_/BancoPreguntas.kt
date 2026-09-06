@@ -20,7 +20,7 @@ fun obtenerPreguntas(tipo: String, dificultad: String): Array<Pregunta> {
 private fun culturaFacil(): Array<Pregunta> {
     return arrayOf(
         Pregunta(
-            "Cuantos dias tiene un ano bisiesto?",
+            "Cuantos dias tiene un año bisiesto?",
             arrayOf("364", "365", "366"),
             2
         ),
@@ -36,7 +36,7 @@ private fun culturaFacil(): Array<Pregunta> {
         ),
         Pregunta(
             "Cual es el idioma oficial de Brasil?",
-            arrayOf("Espanol", "Ingles", "Portugues"),
+            arrayOf("Español", "Ingles", "Portugues"),
             2
         ),
         Pregunta(
@@ -50,7 +50,7 @@ private fun culturaFacil(): Array<Pregunta> {
 private fun culturaDificil(): Array<Pregunta> {
     return arrayOf(
         Pregunta(
-            "En que ano cayo el Muro de Berlin?",
+            "En que año cayo el Muro de Berlin?",
             arrayOf("1975", "1989", "1991"),
             1
         ),
@@ -60,7 +60,7 @@ private fun culturaDificil(): Array<Pregunta> {
             2
         ),
         Pregunta(
-            "Quien escribio la novela Cien anos de soledad?",
+            "Quien escribio la novela Cien años de soledad?",
             arrayOf("Gabriel Garcia Marquez", "Mario Vargas Llosa", "Julio Cortazar"),
             0
         ),
@@ -150,8 +150,8 @@ private fun deportesFacil(): Array<Pregunta> {
             0
         ),
         Pregunta(
-            "Cada cuantos anos se celebran los Juegos Olimpicos?",
-            arrayOf("Dos anos", "Seis anos", "Cuatro anos"),
+            "Cada cuantos años se celebran los Juegos Olimpicos?",
+            arrayOf("Dos años", "Seis años", "Cuatro años"),
             2
         ),
         Pregunta(
@@ -170,7 +170,7 @@ private fun deportesFacil(): Array<Pregunta> {
 private fun deportesDificil(): Array<Pregunta> {
     return arrayOf(
         Pregunta(
-            "Que pais gano la Copa Mundial de futbol del ano 2014?",
+            "Que pais gano la Copa Mundial de futbol del año 2014?",
             arrayOf("Argentina", "Brasil", "Alemania"),
             2
         ),
@@ -180,7 +180,7 @@ private fun deportesDificil(): Array<Pregunta> {
             0
         ),
         Pregunta(
-            "En que ciudad se celebraron los Juegos Olimpicos del ano 2016?",
+            "En que ciudad se celebraron los Juegos Olimpicos del año 2016?",
             arrayOf("Londres", "Rio de Janeiro", "Tokio"),
             1
         ),
@@ -200,7 +200,7 @@ private fun deportesDificil(): Array<Pregunta> {
 private fun historiaFacil(): Array<Pregunta> {
     return arrayOf(
         Pregunta(
-            "Quien llego a America en el ano 1492?",
+            "Quien llego a America en el año 1492?",
             arrayOf("Hernan Cortes", "Cristobal Colon", "Americo Vespucio"),
             1
         ),
@@ -215,7 +215,7 @@ private fun historiaFacil(): Array<Pregunta> {
             2
         ),
         Pregunta(
-            "En que ano se independizo El Salvador?",
+            "En que año se independizo El Salvador?",
             arrayOf("1810", "1821", "1830"),
             1
         ),
@@ -230,7 +230,7 @@ private fun historiaFacil(): Array<Pregunta> {
 private fun historiaDificil(): Array<Pregunta> {
     return arrayOf(
         Pregunta(
-            "En que ano inicio la Segunda Guerra Mundial?",
+            "En que año inicio la Segunda Guerra Mundial?",
             arrayOf("1914", "1939", "1945"),
             1
         ),
@@ -240,7 +240,7 @@ private fun historiaDificil(): Array<Pregunta> {
             0
         ),
         Pregunta(
-            "En que ano llego el ser humano a la Luna por primera vez?",
+            "En que año llego el ser humano a la Luna por primera vez?",
             arrayOf("1959", "1972", "1969"),
             2
         ),
