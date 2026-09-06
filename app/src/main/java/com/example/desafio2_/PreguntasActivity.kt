@@ -18,11 +18,14 @@ class PreguntasActivity : AppCompatActivity() {
     lateinit var tvNivel: TextView
     lateinit var contenedorPreguntas: LinearLayout
     lateinit var tvValidacion: TextView
+    lateinit var contenedorResultado: LinearLayout
+    lateinit var tvTipoRealizado: TextView
     lateinit var tvResultado: TextView
     lateinit var btnFinalizar: Button
     lateinit var btnReiniciar: Button
     lateinit var btnRegresar: Button
 
+    lateinit var tipoQuiz: String
     lateinit var preguntas: Array<Pregunta>
     val grupos: MutableList<RadioGroup> = mutableListOf()
 
@@ -35,16 +38,18 @@ class PreguntasActivity : AppCompatActivity() {
         tvNivel = findViewById(R.id.tvNivel)
         contenedorPreguntas = findViewById(R.id.contenedorPreguntas)
         tvValidacion = findViewById(R.id.tvValidacion)
+        contenedorResultado = findViewById(R.id.contenedorResultado)
+        tvTipoRealizado = findViewById(R.id.tvTipoRealizado)
         tvResultado = findViewById(R.id.tvResultado)
         btnFinalizar = findViewById(R.id.btnFinalizar)
         btnReiniciar = findViewById(R.id.btnReiniciar)
         btnRegresar = findViewById(R.id.btnRegresar)
 
-        val tipo = intent.getStringExtra("TIPO").toString()
+        tipoQuiz = intent.getStringExtra("TIPO").toString()
         val dificultad = intent.getStringExtra("DIFICULTAD").toString()
 
-        preguntas = obtenerPreguntas(tipo, dificultad)
-        tvCategoria.text = tipo
+        preguntas = obtenerPreguntas(tipoQuiz, dificultad)
+        tvCategoria.text = tipoQuiz
         tvNivel.text = "Nivel $dificultad"
 
         construirPreguntas()
@@ -101,7 +106,7 @@ class PreguntasActivity : AppCompatActivity() {
         }
 
         if (faltantes.isNotEmpty()) {
-            tvResultado.visibility = View.GONE
+            contenedorResultado.visibility = View.GONE
             tvValidacion.text = getString(R.string.quiz_faltan, faltantes.joinToString(", "))
             tvValidacion.visibility = View.VISIBLE
             return
@@ -117,14 +122,15 @@ class PreguntasActivity : AppCompatActivity() {
         }
 
         tvValidacion.visibility = View.GONE
+        tvTipoRealizado.text = getString(R.string.quiz_tipo_realizado, tipoQuiz)
         tvResultado.text = getString(R.string.quiz_resultado, aciertos, preguntas.size)
-        tvResultado.visibility = View.VISIBLE
+        contenedorResultado.visibility = View.VISIBLE
     }
 
     private fun reiniciar() {
         grupos.forEach { it.clearCheck() }
         tvValidacion.visibility = View.GONE
-        tvResultado.visibility = View.GONE
+        contenedorResultado.visibility = View.GONE
         raiz.smoothScrollTo(0, 0)
     }
 }

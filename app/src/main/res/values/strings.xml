@@ -48,7 +48,9 @@
     <string name="quiz_tipo_deportes">Deportes</string>
     <string name="quiz_tipo_historia">Historia</string>
     <string name="quiz_faltan">Faltan por responder: %1$s</string>
-    <string name="quiz_resultado">Respuestas correctas: %1$d de %2$d</string>
+    <string name="quiz_resultado_titulo">Resultado del quiz</string>
+    <string name="quiz_tipo_realizado">Tipo de quiz realizado: %1$s</string>
+    <string name="quiz_resultado">Obtuviste %1$d de %2$d respuestas correctas</string>
 
     <string name="accion_iniciar_quiz">Iniciar quiz</string>
     <string name="accion_finalizar">Finalizar quiz</string>
