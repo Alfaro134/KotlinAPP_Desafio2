@@ -37,6 +37,14 @@
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".PreguntasActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

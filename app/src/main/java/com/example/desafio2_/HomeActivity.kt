@@ -29,6 +29,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.textoCorreo.text = usuario.email
+        binding.botonIniciarQuiz.setOnClickListener {
+            startActivity(Intent(this, QuizActivity::class.java))
+        }
         binding.botonCerrarSesion.setOnClickListener {
             auth.signOut()
             abrirLogin()

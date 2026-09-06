@@ -33,4 +33,22 @@
     <string name="error_generico">Ocurrio un error. Intenta de nuevo</string>
 
     <string name="registro_exitoso">Cuenta creada correctamente</string>
+
+    <string name="quiz_titulo">Quiz</string>
+    <string name="quiz_subtitulo">Pon a prueba tus conocimientos</string>
+    <string name="quiz_instrucciones_titulo">Instrucciones</string>
+    <string name="quiz_instrucciones">Cada quiz esta formado por 5 preguntas de opcion multiple. Cada pregunta muestra tres opciones y se responde presionando el boton de la opcion que consideres correcta, al presionarlo pasas de inmediato a la siguiente pregunta. Cuando termines las 5 preguntas se muestra el total de respuestas correctas obtenidas.</string>
+    <string name="quiz_dificultad">Nivel de dificultad</string>
+    <string name="quiz_dificultad_detalle">El nivel seleccionado ajusta la complejidad de las preguntas que se presentan.</string>
+    <string name="quiz_nivel_facil">Facil</string>
+    <string name="quiz_nivel_dificil">Dificil</string>
+    <string name="quiz_tipo">Tipo de quiz</string>
+    <string name="quiz_tipo_cultura">Cultura general</string>
+    <string name="quiz_tipo_ciencia">Ciencia</string>
+    <string name="quiz_tipo_deportes">Deportes</string>
+    <string name="quiz_tipo_historia">Historia</string>
+    <string name="quiz_finalizado">Quiz finalizado</string>
+
+    <string name="accion_iniciar_quiz">Iniciar quiz</string>
+    <string name="accion_regresar">Regresar</string>
 </resources>
