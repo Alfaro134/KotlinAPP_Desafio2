@@ -8,4 +8,19 @@
     <color name="brand_primary_container">#E0E7FF</color>
     <color name="brand_on_primary_container">#1E1B4B</color>
     <color name="brand_secondary">#0EA5E9</color>
+
+    <color name="quiz_fondo">#F1F5F9</color>
+    <color name="quiz_encabezado">#4338CA</color>
+    <color name="quiz_tarjeta">#FFFFFF</color>
+    <color name="quiz_borde">#E2E8F0</color>
+    <color name="quiz_etiqueta">#EEF2FF</color>
+    <color name="quiz_texto">#0F172A</color>
+    <color name="quiz_texto_suave">#475569</color>
+    <color name="quiz_texto_claro">#C7D2FE</color>
+    <color name="quiz_cultura">#6366F1</color>
+    <color name="quiz_ciencia">#0EA5E9</color>
+    <color name="quiz_deportes">#059669</color>
+    <color name="quiz_historia">#D97706</color>
+    <color name="quiz_opcion">#FFFFFF</color>
+    <color name="quiz_regresar">#64748B</color>
 </resources>
